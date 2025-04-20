@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uma Surpresa Para Você</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            animation: float 6s infinite ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: popUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            animation: popUp 2s ease forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background: #ff7675;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+            margin: 10px;
+            opacity: 0;
+            animation: popUp 3s ease forwards;
+        }
+
+        .btn:hover {
+            background: #d63031;
+            transform: scale(1.1);
+        }
+
+        .message {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes popUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .emoji {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        .emoji:nth-child(1) { left: 10%; top: 10%; }
+        .emoji:nth-child(2) { left: 80%; top: 20%; }
+        .emoji:nth-child(3) { left: 30%; top: 70%; }
+        .emoji:nth-child(4) { left: 60%; top: 50%; }
+    </style>
+</head>
+<body>
+
+<div class="emoji">🌸</div>
+<div class="emoji">💫</div>
+<div class="emoji">🌷</div>
+<div class="emoji">💖</div>
+
+<div class="box">
+    <h1>Oi, Srta. Marion!</h1>
+    <p>Cada vez que você clica, algo especial acontece... 😉</p>
+    <button class="btn" onclick="mostrarMensagem()">Clique Aqui</button>
+    <div class="message" id="mensagem"></div>
+</div>
+
+<audio id="musica" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+    const mensagens = [
+        "Você ilumina qualquer lugar! 🌟",
+        "Sabia que seu sorriso vale mais que diamantes? 💎",
+        "A vida fica mais bonita só por sua causa! 🌼",
+        "Já percebeu que tudo fica leve quando você está por perto? ☁️",
+        "Seu jeitinho é a definição de encantador(a). 🎀",
+        "Espero que você nunca esqueça o quanto é especial! 🌷"
+    ];
+
+    let index = 0;
+
+    function mostrarMensagem() {
+        const mensagemDiv = document.getElementById("mensagem");
+        mensagemDiv.textContent = mensagens[index];
+        mensagemDiv.style.opacity = 1;
+        index = (index + 1) % mensagens.length;
+    }
+
+    // Toca a música ao clicar no botão
+    document.querySelector('.btn').addEventListener('click', function(){
+        const musica = document.getElementById('musica');
+        if(musica.paused){
+            musica.play();
+        }
+    });
+</script>
+
+</body>
+</html>
