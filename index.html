@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uma Surpresa Para Você</title>
+    <title>Para Srta.Marion 💖</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+            background: linear-gradient(120deg, #ff9a9e 0%, #fad0c4 100%);
             font-family: 'Comic Sans MS', cursive, sans-serif;
             color: #fff;
             display: flex;
@@ -28,7 +28,7 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             margin-bottom: 20px;
             animation: popUp 1s ease forwards;
             opacity: 0;
@@ -41,13 +41,13 @@
             opacity: 0;
         }
 
-        .btn {
+        .btn, .music-btn {
             padding: 15px 30px;
             background: #ff7675;
             border: none;
             border-radius: 30px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: 0.3s ease;
             margin: 10px;
@@ -55,7 +55,7 @@
             animation: popUp 3s ease forwards;
         }
 
-        .btn:hover {
+        .btn:hover, .music-btn:hover {
             background: #d63031;
             transform: scale(1.1);
         }
@@ -65,6 +65,19 @@
             font-size: 1.5rem;
             opacity: 0;
             transition: opacity 1s ease;
+        }
+
+        .foto {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            display: block;
+            border: 5px solid white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            animation: popUp 1.5s ease forwards;
+            opacity: 0;
         }
 
         @keyframes float {
@@ -91,48 +104,52 @@
 </head>
 <body>
 
-<div class="emoji">🌸</div>
-<div class="emoji">💫</div>
+<div class="emoji">🌹</div>
+<div class="emoji">💞</div>
 <div class="emoji">🌷</div>
 <div class="emoji">💖</div>
 
 <div class="box">
-    <h1>Oi, Srta. Marion!</h1>
-    <p>Cada vez que você clica, algo especial acontece... 😉</p>
-    <button class="btn" onclick="mostrarMensagem()">Clique Aqui</button>
+    <h1>Olá, minha Srta. Marion!</h1>
+    <img src="WhatsApp Image 2025-04-13 at 16.57.26.jpeg" alt="Nossa Foto" class="foto">
+    <p>3 anos juntos e distantes, e desde o primeiro ano... meu coração já sabia.💖</p>
+    <button class="btn" onclick="mostrarMensagem()">Descobrir Mais</button>
+    <button class="music-btn" onclick="toggleMusic()">Pausar Música</button>
     <div class="message" id="mensagem"></div>
 </div>
 
-<audio id="musica" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<audio id="musica" autoplay loop>
+    <source src="Tim Maia - Eu Amo Você(MP3_128K).mp3" type="audio/mp3">
 </audio>
 
 <script>
     const mensagens = [
-        "Você ilumina qualquer lugar! 🌟",
-        "Sabia que seu sorriso vale mais que diamantes? 💎",
-        "A vida fica mais bonita só por sua causa! 🌼",
-        "Já percebeu que tudo fica leve quando você está por perto? ☁️",
-        "Seu jeitinho é a definição de encantador(a). 🎀",
-        "Espero que você nunca esqueça o quanto é especial! 🌷"
+        "Você é meu segredo guardado por anos e agora virou realidade. ✨",
+        "Eu sempre estive aqui, torcendo pelo dia em que você notaria. 💘",
+        "Hoje, te tenho ao meu lado e não poderia estar mais feliz! 💑",
+        "Você foi o sonho que eu cultivei... e agora é minha realidade. 🌹",
+        "Srta. Marion, é com você que minha história faz sentido. 💖"
     ];
 
     let index = 0;
+    const musica = document.getElementById('musica');
+    const mensagemDiv = document.getElementById("mensagem");
 
     function mostrarMensagem() {
-        const mensagemDiv = document.getElementById("mensagem");
         mensagemDiv.textContent = mensagens[index];
         mensagemDiv.style.opacity = 1;
         index = (index + 1) % mensagens.length;
     }
 
-    // Toca a música ao clicar no botão
-    document.querySelector('.btn').addEventListener('click', function(){
-        const musica = document.getElementById('musica');
-        if(musica.paused){
+    function toggleMusic() {
+        if (musica.paused) {
             musica.play();
+            document.querySelector('.music-btn').textContent = "Pausar Música";
+        } else {
+            musica.pause();
+            document.querySelector('.music-btn').textContent = "Tocar Música";
         }
-    });
+    }
 </script>
 
 </body>
